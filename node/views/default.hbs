@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>冯永泽的博客</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="/stylesheets/darcula.css">
+    <link rel="stylesheet" href="/stylesheets/blog.css">
+    <link rel="stylesheet" href="/stylesheets/blog.less">
+  </head>
+  <body>
+    <div class="container-fluid">
+    {{#data}}
+      <div class="row blog-row" data="{{BID}}">
+        <div class="col-md-6 col-lg-6">
+          <label for="title">标题</label>
+          <input class="form-control" id="title" value="{{title}}">
+        </div>
+        <div class="col-md-6 col-lg-6 form-group">
+          <label for="date">时间</label>
+          <div class="input-group form-datetime date">
+            <input class="form-control" id="date" value="{{date}}">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <label for="content">内容</label>
+      <div class="contentBox">
+        {{#each contents}}
+        <div class="row blog-row">
+          <div class="col-md-12 col-lg-12">
+            <textarea class="form-control content" data="{{id}}">{{content}}</textarea>
+            <div class="mark">
+
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      <div class="dropdown">
+        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary">
+          选择文章
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          {{#each count}}
+          <li><a href="BID?BID={{this}}">{{this}}</a></li>
+          {{/each}}
+          <li><a href="addUser">增加</a></li>
+        </ul>
+        <button type="button" name="button" class="btn btn-primary" id="update">更新</button>
+        <button type="button" name="button" class="btn btn-primary" id="add">增加</button>
+      </div>
+    {{/data}}
+  </div>
+  <script type="text/javascript" src="/javascripts/jquery-1.12.3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script src="//cdn.bootcss.com/marked/0.3.6/marked.js"></script>
+  <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script src="/javascripts/blog.js"></script>
+  </body>
+</html>
